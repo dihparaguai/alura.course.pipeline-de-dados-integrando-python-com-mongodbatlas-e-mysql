@@ -1,4 +1,4 @@
-_id,Produto,Categoria do Produto,Preço,Frete,Data da Compra,Vendedor,Local da compra,Avaliação da compra,Tipo de pagamento,Quantidade de parcelas,Latitude,Longitude
+_id,Produto,Categoria do Produto,Preço,Frete,Data da Compra,Vendedor,Local da compra,Avaliação da compra,Tipo de pagamento,Quantidade de parcelas,lat,lon
 67a9ed034165e9d29c47378f,Iniciando em programação,livros,43.84,0.0,2020/01/01,Mariana Ferreira,SP,5,cartao_credito,1,-22.19,-48.79
 67a9ed034165e9d29c4737a1,Iniciando em programação,livros,63.25,3.894137208,2022/01/01,Juliana Costa,RJ,5,cartao_credito,4,-22.25,-42.66
 67a9ed034165e9d29c4737af,Ciência de dados com python,livros,86.13,5.2731755368,2021/02/01,Camila Ribeiro,RJ,4,cartao_credito,3,-22.25,-42.66
