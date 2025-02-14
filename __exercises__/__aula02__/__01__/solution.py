@@ -74,4 +74,3 @@ print(f'qtd dados na colecao: {collection.count_documents({})}')
 # drops the collection and closes the connection to mongodb atlas
 collection.drop()
 client.close()
-

@@ -54,5 +54,4 @@ print(f'qtd dados inseridos: {n_docs_inserted(inserted_docs)}')
 print(f'qtd dados na colecao: {n_docs_on_coll(coll)}')
     
 # closes the MongoDB connection
-client.close() 
-
+client.close()
