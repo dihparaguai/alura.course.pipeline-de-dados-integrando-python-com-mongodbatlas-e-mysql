@@ -42,7 +42,7 @@ api_url = 'https://labdados.com/produtos'
 
 # creates connection and deletes all data
 client = mongo_connect(mongo_uri)
-db = create_and_drop_db_connection(client, 'db_produtos_3')
+db = create_and_drop_db_connection(client, 'db_produtos')
 coll = create_coll_connection(db, 'produtos')
 
 data = extract_api_data(api_url)

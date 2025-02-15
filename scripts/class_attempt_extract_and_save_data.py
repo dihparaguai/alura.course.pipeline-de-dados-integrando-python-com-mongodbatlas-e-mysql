@@ -67,5 +67,5 @@ api_url = 'https://labdados.com/produtos'
 db = MongoDBAtlasInsertDataFromAPI(
     mongo_uri=mongo_uri,
     db_name='db_produtos',
-    collection_name='produtos_2',
+    collection_name='produtos',
     api_url=api_url)
