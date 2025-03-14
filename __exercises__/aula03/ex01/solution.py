@@ -76,7 +76,7 @@ df['data_compra'] = df['data_compra'].dt.strftime('%Y/%m/%d')
 print(df)
 
 # step9: saves the dataframe in a csv file
-df.to_csv('__exercises__/__Aula03__/__01__/produtos_transformados.csv')
+df.to_csv('__exercises__/aula03/ex01/produtos_transformados.csv')
 
 collection.drop()
 client.close()

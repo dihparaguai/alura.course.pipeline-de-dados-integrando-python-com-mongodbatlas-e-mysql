@@ -1,4 +1,4 @@
-from pymongo.server_api import ServerApi
+from pymongo.server_api import ServerApi 
 from pymongo.mongo_client import MongoClient
 import requests
 import pandas as pd
@@ -41,28 +41,29 @@ coll = db['usuarios']
 
 url = 'https://randomuser.me/api/?results=500'
 api_data = extract_api_data(url)
-print(f'\nprimeiro registro da api: \n{api_data[1]}')
+print(f'\nprimeiro registro da api:\n{api_data[1]}')
 
 # inserts api data into collection
 coll.insert_many(api_data)
-print(f'\nqtd de documentos na base: {coll.count_documents({})}')
+print(f'\nqtd de documentos na base:\n{coll.count_documents({})}')
 
 # filters distinct genders
-print(f'\ngeneros disponiveis na coleção: {coll.distinct("gender")}')
+print(f'\ngeneros disponiveis na coleção:\n{coll.distinct("gender")}')
 
 # lists users who only have 'US' as 'nat'
-print(f'\nusuarios com nacionalidade "US": { list( coll.find( {"nat": "US"}, {"name.first": 1, "nat": 1, "_id": 0} ) ) }')
+print(f'\nusuarios com nacionalidade "US":\n{ list( coll.find( {"nat": "US"}, {"name.first": 1, "nat": 1, "_id": 0} ) ) }')
 
 # lists users' names only that contain 'John'
-print(f'\n{ list( coll.find( {"name.first": {"$regex": "John"}}, {"name": 1, "_id": 0} ) ) }')
+# '$options: i' is used to not compare upper or lower case
+print(f'\nusuario que contem "jhon" no primero nome:\n{ list( coll.find( {"name.first": {"$regex": "John", "$options": "i"}}, {"name": 1, "_id": 0} ) ) }')
 
 # adds a new key only to female gender
 coll.update_many({'gender': 'female'}, {'$set': {'status': 'verified'}})
-print(f'\n{ list( coll.find( {}, {"gender": 1, "status": 1, "name.first": 1, "_id": 0} ).limit(10) ) }')
+print(f'\nusuarios que possuem "status" de acordo com o "genero":\n{ list( coll.find( {}, {"gender": 1, "status": 1, "name.first": 1, "_id": 0} ).limit(5) ) }')
 
 # renames some columns
 coll.update_many({}, {'$rename': {'gender': 'genero', 'registered.date': 'registro.data_registro', 'name.first': 'nome.primeiro_nome', 'name.last': 'nome.ultimo_nome'}})
-print(f'\n{ list( coll.find( {}, {"registro.data_registro": 1, "nome.primeiro_nome": 1, "nome.ultimo_nome": 1, "_id": 0} ).limit(10) ) }')
+print(f'\nnome das colunas atualizadas:\n{ list( coll.find( {}, {"registro.data_registro": 1, "nome.primeiro_nome": 1, "nome.ultimo_nome": 1, "_id": 0} ).limit(5) ) }')
 
 # creates a dataframe specific spefic columns
 df = pd.DataFrame(coll.find({}, {"registro.data_registro": 1, "nome.primeiro_nome": 1, "genero": 1}))
@@ -71,10 +72,10 @@ df = pd.DataFrame(coll.find({}, {"registro.data_registro": 1, "nome.primeiro_nom
 df['nome'] = df['nome'].apply(lambda x: x['primeiro_nome'])
 df['registro'] = df['registro'].apply(lambda x: x['data_registro'])
 df['registro'] = df['registro'].apply(lambda x: x[:10])
-print('\n', df.head(3))
+print('\ntabela com alguns dados da coleção:\n', df.head(3))
 
 # creates a csv file using dataframe data
-csv_path = '__exercises__/__Aula03__/__02__/usuarios_transformados.csv'
+csv_path = '__exercises__/aula03/ex02/usuarios_transformados.csv'
 df.to_csv(csv_path, index=False)
 
 # drops the collection and closes the connection to mongodb atlas
