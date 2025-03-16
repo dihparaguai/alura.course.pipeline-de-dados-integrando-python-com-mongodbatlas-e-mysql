@@ -1,0 +1,6 @@
+id_produto,nome_produto,categoria,preco,quantidade_em_estoque,data_adicao,ativo
+P001,Produto A,Eletrônicos,599.99,30,2023-01-15,TRUE
+P002,Produto B,Móveis,199.99,15,2023-02-10,FALSE
+P003,Produto C,Alimentos,5.99,100,2023-03-05,TRUE
+P004,Produto D,Eletrônicos,1499.99,10,2023-01-25,TRUE
+P005,Produto E,Esportes,99.99,50,2023-03-10,TRUE
